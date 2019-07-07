@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  ethereum.node1.com:
+    image: "pjt3591oo/ethereum-geth:1.90"
+    tty: true
+    ports:
+      - 8545:8545
+      - 30305:30305
+    environment:
+      ENV: ETHERNODE1
+      RPCPORT: 8545
+      PORT: 30303
+    volumes:
+      - ./genesis2.json:/ethereum/genesis.json
+    container_name: ethereum.node1.com
+    # command: geth --networkid 1234 --datadir /ethereum --rpc --rpcport 8545 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30303
+    working_dir: /ethereum
+
+  ethereum.node2.com:
+    image: "pjt3591oo/ethereum-geth:1.90"
+    tty: true
+    ports:
+      - 8546:8546
+      - 30304:30304
+    environment:
+      ENV: ETHERNODE2
+      RPCPORT: 8546
+      PORT: 30304
+    volumes:
+      - ./genesis2.json:/ethereum/genesis.json
+    container_name: ethereum.node2.com
+    # command: geth --networkid 1234 --datadir /ethereum --rpc --rpcport 8546 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30304
+    working_dir: /ethereum

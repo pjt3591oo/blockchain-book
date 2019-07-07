@@ -1,0 +1,24 @@
+[parity]
+chain = "/ethereum/genesis.json" 
+base_path = "/ethereum/" 
+
+[network]
+port = 30303
+reserved_peers=  "/ethereum/nodes" 
+allow_ips = "all"
+
+[rpc]
+port = 8545
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces" ,"rpc", "parity_accounts"]
+
+[account]
+password = ["/ethereum/password"] 
+
+[mining]
+engine_signer = "0x1024c83228eb1e487e599e8c0205508d869cfb82"  # validator에 등록한 계정중 하나 넣기
+gas_floor_target = "40000000"
+
+[misc]
+logging = "own_tx=trace"
+log_file = "/ethereum/log.log"
+color = true

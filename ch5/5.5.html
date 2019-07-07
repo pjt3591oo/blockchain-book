@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>web3.js 시작하기 - 테스트 네트워크 연결</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      let web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io'));
+
+      web3.eth.getBlockNumber((err, blockCount) => {
+        console.log(blockCount)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+{
+  "name": "basic-network",
+  "version": "1.0.0",
+  "client": {
+  "organization": "Org1",
+  "connection": {
+  "timeout": {
+  "peer": {
+  "endorser": "300"
+  },
+  "orderer": "300"
+  }
+  }
+  },
+  "channels": {
+  "mychannel": {
+  "orderers": ["orderer.example.com"],
+  "peers": {
+  "peer0.org1.example.com": {
+  "endorsingPeer": true,
+  "chaincodeQuery": true,
+  "ledgerQuery": true,
+  "eventSource": true
+  },
+  "peer0.org2.example.com": {
+  "endorsingPeer": true,
+  "chaincodeQuery": true,
+  "ledgerQuery": true,
+  "eventSource": true
+  }
+  }
+  }
+  },
+  "organizations": {
+  "Org1": {
+  "mspid": "Org1MSP",
+  "peers": [
+  "peer0.org1.example.com",
+  "peer1.org1.example.com"
+  ],
+  "certificateAuthorities": ["ca.org1.example.com"],
+  "adminPrivateKey": {
+  "path": "../crypto-config/peerOrganizations/org1.example.com/users/Admin@.../msp/keystore/8f3055ee24c8e4575f2fea297a7bbde998i63b7451ea8f7880b5cb91ec24a7d_sk"
+  },
+  "signedCert": {
+  "path": "../crypto-config/peerOrganizations/org1.example.com/users/Admin@.../msp/signcerts/Admin@..."
+  }
+  },
+  "Org2": {
+  "mspid": "Org2MSP",
+  "peers": [
+  "peer0.org2.example.com",
+  "peer1.org2.example.com"
+  ],
+  "certificateAuthorities": ["ca.org2.example.com"],
+  "adminPrivateKey": {
+  "path": "../crypto-config/peerOrganizations/org2.example.com/users/Admin@.../msp/keystore/e2537a15b0609866b4ec1f70e7a4f77qf915653980f9788af8d2f2b67bdf910_sk"
+  },
+  "signedCert": {
+  "path": "../crypto-config/peerOrganizations/org2.example.com/users/Admin@.../msp/signcerts/Admin@..."
+  }
+  }
+  },
+  "orderers": {
+  "orderer.example.com": {
+  "url": "grpcs://localhost:7050",
+  "grpcOptions": {
+  "ssl-target-name-override": "orderer.example.com",
+  "grpc-max-send-message-length": 15
+  },
+  " tlsCACerts": {
+  "path": "../crypto-config/ordererOrganizations/trafficfine.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem"
+  }
+  }
+  },
+  "peers": {
+  "peer0.org1.example.com": {
+  "url": "grpcs://localhost:7051",
+  "eventUrl": "grpcs://localhost:7053",
+  "grpcOptions": {
+  "ssl-target-name-override": "peer0.org1.example.com",
+  "grpc.keepalive_time_ms": 600000
+  },
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem"
+  }
+  },
+  "peer1.org1.example.com": {
+  "url": "grpcs://localhost:8051",
+  "eventUrl": "grpcs://localhost:8053",
+  "grpcOptions": {
+  "ssl-target-name-override": "peer1.org1.example.com",
+  "grpc.keepalive_time_ms": 600000
+  },
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem"
+  }
+  },
+  "peer0.org2.example.com": {
+  "url": "grpcs://localhost:9051",
+  "eventUrl": "grpcs://localhost:9053",
+  "grpcOptions": {
+  "ssl-target-name-override": "peer0.org2.example.com",
+  "grpc.keepalive_time_ms": 600000
+  },
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem"
+  }
+  },
+  "peer1.org2.example.com": {
+  "url": "grpcs://localhost:7051",
+  "eventUrl": "grpcs://localhost:7053",
+  "grpcOptions": {
+  "ssl-target-name-override": "peer1.org2.example.com",
+  "grpc.keepalive_time_ms": 600000
+  },
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem"
+  }
+  }
+  },
+  "certificateAuthorities": {
+  "ca.org1.example.com": {
+  "url": "https://localhost:7054",
+  "httpOptions": {
+  "verify": false
+  },
+  "caName": "ca.org1.example.com",
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem"
+  }
+  },
+  "ca.org2.example.com": {
+  "url": "https://localhost:7054",
+  "httpOptions": {
+  "verify": false
+  },
+  "caName": "ca.org2.example.com",
+  "tlsCACerts": {
+  "path": "../crypto-config/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem"
+  }
+  }
+  }
+  }
+  
+  

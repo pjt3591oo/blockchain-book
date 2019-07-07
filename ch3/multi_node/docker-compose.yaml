@@ -1,0 +1,59 @@
+version: "2"
+
+services:
+  ethereum.node1.com:
+    image: "pjt3591oo/ethereum-parity:2.4.0"
+    tty: true
+    ports:
+      - 8545:8545
+      - 30303:30303
+    environment:
+      ENV: ETHERNODE1
+      RPCPORT: 8545
+      PORT: 30303
+    volumes:
+      - ./config1.toml:/ethereum/config.toml
+      - ./genesis.json:/ethereum/genesis.json
+      - ./password:/ethereum/password
+      - ./nodes:/ethereum/nodes
+      - ./keys1:/ethereum/keys
+    container_name: ethereum.node1.com
+    command: >
+      sh -c "cd ~/
+            parity --config /ethereum/config.toml --geth"
+    working_dir: /ethereum
+
+  ethereum.node2.com:
+    image: "pjt3591oo/ethereum-parity:2.4.0"
+    tty: true
+    ports:
+      - 8546:8545
+      - 30304:30303
+    environment:
+      ENV: ETHERNODE2
+      RPCPORT: 8545
+      PORT: 30303
+    volumes:
+      - ./config2.toml:/ethereum/config.toml
+      - ./genesis.json:/ethereum/genesis.json
+      - ./password:/ethereum/password
+      - ./nodes:/ethereum/nodes
+      - ./keys2:/ethereum/keys
+    container_name: ethereum.node2.com
+    command: >
+      sh -c "cd ~/
+            parity --config /ethereum/config.toml --geth"
+    working_dir: /ethereum
+
+  cli:
+    image: "pjt3591oo/ethereum-geth:1.90"
+    tty: true
+    container_name: cli
+    working_dir: /ethereum
+    command: /bin/bash
+    links:
+      - ethereum.node1.com:ethereum.node1.com
+      - ethereum.node2.com:ethereum.node2.com
+    depends_on:
+      - ethereum.node1.com
+      - ethereum.node2.com

@@ -1,0 +1,56 @@
+# -------------- admin ---------------
+
+# enroll
+POST http://127.0.0.1:3000/admin/v1.0/enrollAdmin HTTP/1.1
+content-type: application/json
+
+###
+
+# register user
+POST http://127.0.0.1:3000/admin/v1.0/registerUser HTTP/1.1
+content-type: application/json
+
+
+
+### -------------- test api ---------------
+
+## 채널 test1 
+
+# get 
+
+GET http://127.0.0.1:3000/api/v1.0/chaincode?data=a&channel=test1 HTTP/1.1
+content-type: application/json
+
+###
+
+# save
+POST http://127.0.0.1:3000/api/v1.0/chaincode HTTP/1.1
+content-type: application/json
+
+{
+    "data1": "a",
+    "data2": "b",
+    "data3": "10",
+    "channel": "test3"
+}
+
+###
+
+## 채널 test2 
+
+# get 
+GET http://127.0.0.1:3000/api/v1.0/chaincode?data=a&channel=test2 HTTP/1.1
+content-type: application/json
+
+###
+
+# save
+POST http://127.0.0.1:3000/api/v1.0/chaincode HTTP/1.1
+content-type: application/json
+
+{
+    "data1": "a",
+    "data2": "b",
+    "data3": "10",
+    "channel": "test2"
+}
